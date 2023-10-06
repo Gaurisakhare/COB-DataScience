@@ -26,10 +26,11 @@ files.download('binance.csv')
 
 
 #PHASE1 Q2
+#Here the file 'dataset - netflix1' is uploded in the google colab
 
 import pandas as pd
 
-df = pd.read_csv("/content/netflix1.csv")
+df = pd.read_csv("/content/dataset - netflix1.csv")
 
 df.dropna(inplace=True) 
 
