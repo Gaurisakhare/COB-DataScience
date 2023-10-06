@@ -1,0 +1,37 @@
+#PHASE1 Q1
+
+import pandas as pd
+import requests
+
+response = requests.get("https://api.binance.com/api/v3/ticker/24hr")
+
+if response.status_code == 200:
+    
+    data = response.json()
+        
+    df = pd.DataFrame(data)
+    
+    columns = ['symbol', 'lastPrice', 'volume', 'quoteVolume', 'highPrice', 'lowPrice']
+    
+    df = df[columns]
+    
+    df.to_csv('binance.csv', index=False)
+    
+    print("CSV dataset has been created successfully.")
+else:
+    print("Failed to retrieve data from the API.")
+
+files.download('binance.csv')
+
+
+
+#PHASE1 Q2
+
+import pandas as pd
+
+df = pd.read_csv("/content/netflix1.csv")
+
+df.dropna(inplace=True) 
+
+cleaned_file_path = r"C:\Users\gauri\Downloads\cleaned_dataset.csv"
+df.to_csv(cleaned_file_path, index=False)
