@@ -1,0 +1,11 @@
+#PHASE1 Q2
+#Here the file 'dataset - netflix1' is uploded in the google colab
+
+import pandas as pd
+
+df = pd.read_csv("/content/dataset - netflix1.csv")
+
+df.dropna(inplace=True) 
+
+cleaned_file_path = r"C:\Users\gauri\Downloads\cleaned_dataset.csv"
+df.to_csv(cleaned_file_path, index=False)
