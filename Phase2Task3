@@ -1,0 +1,67 @@
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+file_path = r"/content/dataset - netflix1.csv"
+df = pd.read_csv(file_path)
+
+print(df.head())
+
+# Data Analysis and Visualization
+
+
+# Count of movies vs tv shows
+plt.figure(figsize=(6, 4))
+sns.countplot(data=df, x='type')
+plt.title('Count of Movies vs. TV Shows')
+plt.xlabel('Type')
+plt.ylabel('Count')
+plt.show()
+
+
+# Count of Movies/TV Shows by Rating
+plt.figure(figsize=(8, 6))
+sns.countplot(data=df, x='rating')
+plt.title('Count of Movies/TV Shows by Rating')
+plt.xlabel('Rating')
+plt.ylabel('Count')
+plt.show()
+
+
+# Ratings Distribution
+ratings_counts = df['rating'].value_counts()
+plt.figure(figsize=(8, 8))
+plt.pie(ratings_counts, labels=ratings_counts.index, autopct='%1.1f%%', startangle=90)
+plt.title('Ratings Distribution')
+plt.show()
+
+
+# Top 10 Genres on Netflix
+top_genres = df['listed_in'].value_counts().head(10)
+plt.figure(figsize=(12, 8))
+sns.barplot(y=top_genres.index, x=top_genres.values, palette='viridis')
+plt.title('Top 10 Genres on Netflix')
+plt.xlabel('Count')
+plt.ylabel('Genres')
+plt.show()
+
+
+# Number of Movies/TV Shows Released Each Year
+plt.figure(figsize=(14, 8))
+release_years = df['release_year'].value_counts().sort_index()
+sns.barplot(x=release_years.index, y=release_years.values, palette='coolwarm')
+plt.title('Number of Movies/TV Shows Released Each Year')
+plt.xlabel('Year')
+plt.ylabel('Count')
+plt.xticks(rotation=45)
+plt.show()
+
+
+# Top 10 Directors on Netflix
+top_directors = df['director'].value_counts().head(10)
+plt.figure(figsize=(12, 8))
+sns.barplot(y=top_directors.index, x=top_directors.values, palette='magma')
+plt.title('Top 10 Directors on Netflix')
+plt.xlabel('Count')
+plt.ylabel('Directors')
+plt.show()
